@@ -2,11 +2,12 @@
 import { ref } from 'vue';
 import Card from 'primevue/card';
 import 'animate.css';
-import ProductCard from '../components/ProductCard2.vue';
+import ProductCard from '../components/ProductCard.vue';
 
 </script>
 
 <template>
+
     <div class="container">
         <h1 class="animate__animated animate__fadeInDown ">Welcome to the products page</h1>
         <p class="animate__animated animate__bounceInLeft">New products coming soon!</p>
@@ -23,12 +24,12 @@ body {
 
 
 h1 {
-    color: red;
+    color: #1C1C1C;
     /* This will color the text red */
 }
 
 p{
-    color:red;
+    color:#1C1C1C;
 }
 
 

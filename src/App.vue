@@ -1,6 +1,6 @@
 <script setup>
 
-
+import './assets/fonts.css'; // <-- Import font styles
 import NavBar from './components/NavBar.vue';
 </script>
 
@@ -12,8 +12,9 @@ import NavBar from './components/NavBar.vue';
 
 </template>
 
-<style scoped>
-body{
-  background-color: white;
+<style>
+body {
+  background-color: #F9F9FB !important;
+
 }
 </style>
