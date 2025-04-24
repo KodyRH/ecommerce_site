@@ -1,22 +1,29 @@
 <script setup>
-import Card from 'primevue/card'
-import products from '@/Data/products';
-import { ref } from 'vue';
-import Button from 'primevue/button';  // Import PrimeVue Button
-const productNames = ref([]);
+import Card from 'primevue/card';
+import Button from 'primevue/button'; // Import PrimeVue Button
+import { defineProps, defineEmits } from 'vue';
 
-products.forEach(product => {
-    productNames.value.push(product.name);
+// Define props to accept products from the parent component
+defineProps({
+    products: {
+        type: Array,
+        required: true,
+    },
 });
 
-console.log(productNames.value);
+// Define emits to notify the parent component of events
+const emit = defineEmits(['addToCart', 'viewDetails']);
 
 const handleClick = (product) => {
-    console.log(product.id); // have access to the product data
-    console.log("button clicked");
-    // I will emit this data to the cart page when the user clicks on it. 
-}
+    console.log(product.id); // Access the product data
+    console.log("Add to Cart button clicked");
+    emit('addToCart', product); // Emit the product to the parent component
+};
 
+const handleDetailsClick = (product) => {
+    console.log("View Details button clicked");
+    emit('viewDetails', product); // Emit the product to the parent component
+};
 </script>
 
 <template>
@@ -33,7 +40,7 @@ const handleClick = (product) => {
             <template #footer>
                 <div class="button-group">
                     <Button label="Add to Cart" class="custom-button" @click="handleClick(product)" />
-                    <Button id="detailsBtn" label="More Info" class="custom-button" />
+                    <Button id="detailsBtn" label="More Info" class="custom-button" @click="handleDetailsClick(product)" />
                 </div>
             </template>
         </Card>
@@ -43,32 +50,33 @@ const handleClick = (product) => {
 <style scoped>
 .card-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    /* 3 columns */
-    grid-template-rows: repeat(3, 1fr);
-    /* 3 rows (for a 3x3 grid) */
-    gap: 20px;
-    /* Space between grid items */
-    width: 60vw;
-    /* Takes up the full viewport width */
-    height: 80vh;
-    /* Takes up the full viewport height */
+    grid-template-columns: repeat(4, 1fr); /* Four products per row */
+    gap: 20px; /* Space between grid items */
+    justify-content: center; /* Center the grid horizontally */
+    align-items: center; /* Center the grid vertically */
     padding: 20px;
+    width: 100%;
     box-sizing: border-box;
-    /* Ensures padding doesn't overflow */
+    
 }
 
-#detailsBtn {
-    margin: auto;
+@media (max-width: 768px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr); /* Two products per row on smaller screens */
+    }
 }
+
+@media (max-width: 480px) {
+    .card-container {
+        grid-template-columns: 1fr; /* One product per row on very small screens */
+    }
+}
+
 
 .product-image {
     width: 100%;
-    /* Makes image fill the card's width */
-    height: 100%;
-    /* Ensures the image fills the card's height */
-    object-fit: cover;
-    /* Ensures the image is not distorted */
+    height: 100%; /* Fixed height for images */
+    object-fit: cover; /* Ensures the image is not distorted */
 }
 
 .p-card-content h3,
@@ -76,77 +84,44 @@ const handleClick = (product) => {
     color: #333333;
 }
 
-body {
-    display: flex;
-    justify-content: center;
-    /* Horizontally center */
-    align-items: center;
-    /* Vertically center */
-    height: 100vh;
-    /* Full viewport height */
-    margin: 0;
-    /* Remove default margin */
-}
-
 .p-card {
     border: 2px solid black;
-    /* Adds a black border */
     border-radius: 8px;
-    /* Optional: adds rounded corners */
     padding: 10px;
-    /* Adds some spacing inside the card */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    /* Optional: adds a slight shadow */
     transition: transform 0.3s ease-out;
-    transform-style: preserve-3d;
-    /* Keeps 3D child elements */
-    will-change: transform;
-    /* Optimizes rendering performance */
-    backface-visibility: hidden;
     background-color: #FFFFFF;
-
+    width: 80%; /* Decrease the width of the product cards */
+    height: auto; /* Allow height to adjust dynamically */
 }
 
 .p-card:hover {
-    /* transform: rotateY(10deg) rotateX(5deg) scale(1.05); */
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     transition: box-shadow 0.3s ease-in-out;
 }
 
-/* Scoped CSS with deep selector */
 .custom-button {
-    background-color: #007bff;
-    /* Default background color */
+    background-color: #010b15;
     color: white;
-    /* Text color */
-    padding: 10px 20px;
-    /* Padding for the button */
+    padding: 8px 16px;
     border-radius: 5px;
-    /* Rounded corners */
     font-weight: bold;
-    /* Bold text */
     transition: background-color 0.3s ease, transform 0.3s ease;
     cursor: pointer;
-    /* Ensure cursor is a pointer when hovering over the button */
 }
 
-/* Hover effect for the Button */
 .custom-button:hover {
-    background-color: #2059d2 !important;
+    background-color: #040b1b !important;
     transform: scale(1.1);
-    /* Slightly enlarge the button on hover */
-    cursor: pointer;
-    /* Ensure cursor is pointer when hovering */
 }
-
 
 .button-group {
     display: flex;
-    gap: 10px;
-    /* Adjust spacing here */
-    flex-wrap: wrap;
-    /* Optional: wrap on smaller screens */
+    justify-content: space-between; /* Push buttons to the left and right */
+    align-items: center; /* Align buttons vertically */
+    gap: 10px; /* Add spacing between buttons */
+    width: 100%; /* Ensure the button group spans the full width of the card */
+    padding: 0 10px; /* Optional: Add padding to the sides */
+    margin-top: 20px; /* Optional: Add margin to the top */
 }
-
-
 </style>

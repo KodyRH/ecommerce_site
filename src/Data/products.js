@@ -1,10 +1,10 @@
 export default [
     {
         id: 1,
-        name: 'Bad Day To Be A Beer Mug',
+        name: 'Sample Product',
         description: 'This is a sample product description.',
         price: 5.99,
-        image: '/Images/ceramic-mug.jpg'
+        image: '/Images/Basic-Heavy-Black-T-Shirt.jpg'
     },
 
     {
@@ -12,7 +12,7 @@ export default [
         name: 'Sample Product',
         description: 'This is a sample product description',
         price: 29.99,
-        image: '/Images/mens-heavy-oversized-tee.jpg'
+        image: '/Images/Basic-White-T-Shirt.jpg'
     },
 
     {
@@ -20,7 +20,7 @@ export default [
         name: 'Sample Product',
         description: 'This is a sample product description',
         price: 20.99,
-        image: '/Images/bad-day-to-be-a-beer-poster.jpg'
+        image: '/Images/Basic-Heavy-T-Shirt.jpg'
     },
 
     {
@@ -28,7 +28,14 @@ export default [
         name: 'Sample Product',
         description: 'This is a sample product description',
         price: 20.99,
-        image: '/Images/bad-day-to-be-a-beer-poster.jpg'
+        image: '/Images/Basic-Vintage-T-Shirt.jpg'
+    },
+    {
+        id: 5,
+        name: 'Sample Product',
+        description: 'This is a sample product description',
+        price: 20.99,
+        image: '/Images/mens-heavy-oversized-tee-design.jpg'
     },
 ];
 

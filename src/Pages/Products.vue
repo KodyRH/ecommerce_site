@@ -1,36 +1,55 @@
 <script setup lang="js">
-import { ref } from 'vue';
-import Card from 'primevue/card';
 import 'animate.css';
 import ProductCard from '../components/ProductCard.vue';
+import products from '@/Data/products'; // Import your products data
 
+
+// Handle events emitted by ProductCard
+const handleAddToCart = (product) => {
+    console.log("Product added to cart:", product);
+};
+
+const handleViewDetails = (product) => {
+    console.log("View details for product:", product);
+};
 </script>
 
 <template>
-
     <div class="container">
-        <h1 class="animate__animated animate__fadeInDown ">Welcome to the products page</h1>
+        <h1 class="animate__animated animate__fadeInDown">Welcome to the products page</h1>
         <p class="animate__animated animate__bounceInLeft">New products coming soon!</p>
-        <ProductCard></ProductCard> 
+        <!-- Pass products and handle emitted events -->
+        <ProductCard 
+            :products="products" 
+            @addToCart="handleAddToCart" 
+            @viewDetails="handleViewDetails" 
+        />
     </div>
-    <!-- probably should call this something different because I am putting listing all my products in the actuall component productcard which doesn't make a whole lot of sense. -->
 </template>
-
 
 <style scoped>
 body {
     background-color: rgb(255, 255, 255);
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center horizontally */
+    justify-content: center; /* Center vertically */
+    text-align: center; /* Center text inside the container */
+    height: 100vh; /* Full viewport height */
+    padding: 20px;
+    box-sizing: border-box;
+}
 
 h1 {
     color: #1C1C1C;
-    /* This will color the text red */
+    margin-bottom: 10px; /* Add spacing between h1 and p */
 }
 
-p{
-    color:#1C1C1C;
+p {
+    color: #1C1C1C;
+    margin-bottom: 20px; /* Add spacing between p and ProductCard */
 }
-
-
 </style>
