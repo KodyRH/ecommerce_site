@@ -1,8 +1,9 @@
 <template>
   <div>
     <HeroSection />
-    <Popular />
     <Category />
+    <Popular />
+
   </div>
 </template>
 

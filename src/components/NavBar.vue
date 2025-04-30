@@ -1,6 +1,6 @@
 <template>
   <nav class="navbar">
-    <div class="logo">Grave Threads</div>
+    <div class="logo">Artisan Grit</div>
     <ul>
       <li><router-link to="/">Home</router-link></li>
       <li><router-link to="/products">Products</router-link></li>
