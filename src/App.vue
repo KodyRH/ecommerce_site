@@ -31,7 +31,7 @@ body {
 
 /* Main content area */
 .main-content {
-  margin-top:5%;
+  /* margin-top:5%; */
   flex: 1; /* Allow the main content to grow and take up available space */
   padding: 50px; /* Add padding to prevent content from touching the edges */
   box-sizing: border-box; /* Include padding in the element's width and height */

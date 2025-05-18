@@ -11,7 +11,7 @@ defineProps({
     },
     itemsPerRow: {
         type: Number,
-        default: 4, // Default to 4 items per row
+        default: 3, // Default to 4 items per row
     },
 });
 
@@ -50,11 +50,12 @@ const handleDetailsClick = (product) => {
 <style scoped>
 .card-container {
     display: grid;
-    gap: 20px;
+    gap: 10px;
     justify-content: center;
+    justify-items: center;
     align-items: center;
     padding: 20px;
-    width: 80%;
+    width: 90%;
     box-sizing: border-box;
 }
 
