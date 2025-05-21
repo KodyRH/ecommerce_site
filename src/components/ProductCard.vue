@@ -39,8 +39,8 @@ const handleDetailsClick = (product) => {
             </template>
             <template #footer>
                 <div class="button-group">
-                    <Button label="Add to Cart" class="custom-button" @click="handleClick(product)" />
                     <Button label="More Info" class="custom-button" @click="handleDetailsClick(product)" />
+                    <Button label="Add to Cart" class="custom-button" @click="handleClick(product)" />
                 </div>
             </template>
         </Card>
